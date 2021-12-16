@@ -9,13 +9,13 @@
             while (power)
             {
                  Console.WriteLine(@"Lütfen yapmak istediğiniz işlemi seçiniz :)
-                 \n*******************************************
-                 \n(1) Board Listelemek
-                 \n(2) Board'a Kart Eklemek
-                 \n(3) Board'dan Kart Değiştirmek
-                 \n(4) Board'dan Kart Silmek
-                 \n(5) Kart Taşımak
-                 \n(0) Uygulamadan Çık");
+*******************************************
+(1) Board Listelemek
+(2) Board'a Kart Eklemek
+(3) Board'dan Kart Değiştirmek
+(4) Board'dan Kart Silmek
+(5) Kart Taşımak
+(0) Uygulamadan Çık");
                 
                 int choice;
                 while (!Int32.TryParse(Console.ReadLine(), out choice)){}
