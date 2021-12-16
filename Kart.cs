@@ -4,15 +4,15 @@ namespace proje2_ToDo
     {
         public string Title { get; set; }
         public string Context { get; set; }
-        private string Name { get; }
+        private int Id { get; }
         private int Size { get; }
 
 
-        public Kart(string title, string context, string name, int size)
+        public Kart(string title, string context, int id, int size)
         {
             this.Title = title;
             this.Context = context;
-            this.Name = name;
+            this.Id = id;
             this.Size = size;
         }
     }
