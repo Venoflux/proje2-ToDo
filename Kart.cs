@@ -5,9 +5,19 @@ namespace proje2_ToDo
         public string Title { get; set; }
         public string Context { get; set; }
         private string Name { get; }
-        private string Size { get; }
+        private int Size { get; }
 
-        public enum SizeTypes
+
+        public Kart(string title, string context, string name, int size)
+        {
+            this.Title = title;
+            this.Context = context;
+            this.Name = name;
+            this.Size = size;
+        }
+    }
+
+    public enum SizeTypes
         {
             XS = 1,
             S,
@@ -15,14 +25,4 @@ namespace proje2_ToDo
             L,
             XL
         }
-
-        public Kart(string title, string context, string name, int size)
-        {
-            this.Title = title;
-            this.Context = context;
-            this.Name = name;
-            SizeTypes value = (SizeTypes) size;
-            this.Size = value.ToString();
-        }
-    }
 }
