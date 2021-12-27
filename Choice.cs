@@ -82,7 +82,49 @@ namespace proje2_ToDo
 
         public static void KartDelete()
         {
+            Console.WriteLine(@"Öncelikle silmek istediğiniz kartı seçmeniz gerekiyor.
+ Lütfen kart başlığını yazınız:  ");
+            string title = Console.ReadLine();
+            int search_index;
+            switch (Choice.ListeBulucu(title))
+            {
+                case 1:
+                {
+                    search_index = KartBulucu(title, todo);
+                    todo.RemoveAt(search_index);
+                    Console.WriteLine("Kart başarıyla silinmiştir.");
+                    Console.ReadKey();
+                    break;
+                }
 
+                case 2:
+                {
+                    search_index = KartBulucu(title, progress);
+                    progress.RemoveAt(search_index);
+                    Console.WriteLine("Kart başarıyla silinmiştir.");
+                    Console.ReadKey();
+                    break;
+                }
+
+                case 3:
+                {
+                    search_index = KartBulucu(title, done);
+                    done.RemoveAt(search_index);
+                    Console.WriteLine("Kart başarıyla silinmiştir.");
+                    Console.ReadKey();
+                    break;
+                }
+
+                case -1:
+                {
+                    Console.WriteLine("Aradığınız başlıkta bir Kart bulunmamaktadır. ");
+                    Console.ReadKey();
+                    break;
+                }
+                
+                default:
+                    break;
+            }   
         }
 
         public static void KartMove()
