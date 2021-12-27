@@ -31,12 +31,14 @@
                     case 1:
                     {
                         Console.Clear();
+                        Choice.KartPrint();
                         break;
                     }
                     
                     case 2:
                     {
                         Console.Clear();
+                        Choice.KartEkle();
                         break;
                     }
 

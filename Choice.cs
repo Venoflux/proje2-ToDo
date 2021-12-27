@@ -48,22 +48,90 @@ namespace proje2_ToDo
         {
             Console.WriteLine("Güncellemek İstediğiniz Kart'ın Başlığı :");
             string title = Console.ReadLine();
-            
-            
-            
+            int search_index;
+            switch (Choice.ListeBulucu(title))
+            {
+                case 1:
+                {
+                    search_index = KartBulucu(title, todo);
+                    break;
+                }
+
+                case 2:
+                {
+                    search_index = KartBulucu(title, progress);
+                    break;
+                }
+
+                case 3:
+                {
+                    search_index = KartBulucu(title, done);
+                    break;
+                }
+
+                case -1:
+                {
+                    Console.WriteLine("Aradığınız başlıkta bir Kart bulunmamaktadır. ");
+                    break;
+                }
+                
+                default:
+                    break;
+            }   
         }
 
-
-
-        ///<summary>
-        /// Kart template'i ekrana yazdırılır.
-        ///</summary>
-        ///<returns>void, sadece ekrana yazdırır</returns>
-        private static void PrintTemplate(object Kart)
+        public static void KartDelete()
         {
-            /*Console.WriteLine($@"Başlık: {}
-            \nİçerik: {}");*/
+
         }
+
+        public static void KartMove()
+        {
+
+        }
+
+        public static void KartPrint()
+        {
+            Console.WriteLine("TODO Line");
+            Console.WriteLine("************************");
+            if (todo.Count != 0)
+            {
+                foreach (var item in todo)
+                {
+                    item.KartBilgileri(worker_dict);
+                    Console.WriteLine("-");
+                }
+            }
+            else
+                Console.WriteLine("~ BOŞ ~");
+
+            Console.WriteLine("\nIN PROGRESS Line");
+            Console.WriteLine("************************");
+            if (progress.Count != 0)
+            {
+                foreach (var item in progress)
+                {
+                    item.KartBilgileri(worker_dict);
+                    Console.WriteLine("-");
+                }
+            }
+            else
+                Console.WriteLine("~ BOŞ ~");
+
+            Console.WriteLine("\nDONE Line");
+            Console.WriteLine("************************");
+            if (done.Count != 0)
+            {
+                foreach (var item in done)
+                {
+                    item.KartBilgileri(worker_dict);
+                    Console.WriteLine("-");
+                }
+            }
+            else
+                Console.WriteLine("~ BOŞ ~");
+        }
+
 
         ///<summary>
         /// Girilen id input'u dictionary de varmı kontrol eder.
