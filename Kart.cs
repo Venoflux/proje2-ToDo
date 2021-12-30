@@ -2,10 +2,10 @@ namespace proje2_ToDo
 {
     class Kart
     {
-        public string Title;
-        public string Context;
-        private int Id;
-        private int Size;
+        public string Title {get;set;}
+        public string Context {get;set;}
+        public int Id {get;set;}
+        public int Size {get;set;}
 
 
         public Kart(string title, string context, int id, int size)
@@ -24,7 +24,7 @@ namespace proje2_ToDo
             Console.WriteLine($@"Başlık: {Title}
 İçerik: {Context}
 Atanan Kişi: {name}
-Büyükşük: {size}");
+Büyüklük: {size}");
         }
     }
 
