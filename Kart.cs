@@ -21,10 +21,10 @@ namespace proje2_ToDo
             string name = my_dict.GetValueOrDefault(Id);
             string size = Enum.GetName(typeof(SizeTypes), Size);
             
-            Console.WriteLine($@"Başlık: {Title}
-İçerik: {Context}
-Atanan Kişi: {name}
-Büyüklük: {size}");
+            Console.WriteLine($@"Başlık     : {Title}
+İçerik      : {Context}
+Atanan Kişi : {name}
+Büyüklük    : {size}");
         }
     }
 
