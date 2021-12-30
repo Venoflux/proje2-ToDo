@@ -59,6 +59,7 @@
                     case 5:
                     {
                         Console.Clear();
+                        Choice.KartMove();
                         break;
                     }
 

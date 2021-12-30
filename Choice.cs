@@ -132,7 +132,49 @@ namespace proje2_ToDo
 
         public static void KartMove()
         {
-            
+            Console.WriteLine(@"Öncelikle silmek istediğiniz kartı seçmeniz gerekiyor.
+Lütfen kart başlığını yazınız:  ");
+            string title = Console.ReadLine();
+            int search_index;
+            switch (Choice.ListeBulucu(title))
+            {
+                case 1:
+                {
+                    search_index = KartBulucu(title, todo);
+                    KartMover(search_index, "TODO", todo, worker_dict);
+                    Console.WriteLine("Kart başarıyla taşınmıştır.");
+                    Console.ReadKey();
+                    break;
+                }
+
+                case 2:
+                {
+                    search_index = KartBulucu(title, progress);
+                    KartMover(search_index, "IN PROGRESS", progress, worker_dict);
+                    Console.WriteLine("Kart başarıyla taşınmıştır.");
+                    Console.ReadKey();
+                    break;
+                }
+
+                case 3:
+                {
+                    search_index = KartBulucu(title, done);
+                    KartMover(search_index, "DONE", done, worker_dict);
+                    Console.WriteLine("Kart başarıyla taşınmıştır.");
+                    Console.ReadKey();
+                    break;
+                }
+
+                case -1:
+                {
+                    Console.WriteLine("Aradığınız başlıkta bir Kart bulunmamaktadır. ");
+                    Console.ReadKey();
+                    break;
+                }
+                
+                default:
+                    break;
+            }
         }
 
         public static void KartPrint()
@@ -290,11 +332,48 @@ Büyüklük    (4)");
                 }
             }
         }
-        private static void FailProtocol()
+        private static void KartMover(int index, string line, List<Kart> fromList, Dictionary<int, string> my_dict)
         {
-            
+            Console.WriteLine(@"Bulunan Kart Bilgileri:
+**************************************");
+            fromList[index].KartBilgileri(my_dict);
+            Console.WriteLine($"Line       :");
+            Console.WriteLine(@"
+Lütfen taşımak istediğiniz Line'ı seçiniz:
+(1) TODO
+(2) IN PROGRESS
+(3) DONE");
+
+            int choice;
+            while (!Int32.TryParse(Console.ReadLine(), out choice)){}
+
+            switch (choice)
+            {
+                case 1:
+                {
+                    todo.Add(fromList[index]);
+                    fromList.RemoveAt(index);
+                    break;
+                }
+                case 2:
+                {
+                    progress.Add(fromList[index]);
+                    fromList.RemoveAt(index);
+                    break;
+                }
+                case 3:
+                {
+                    done.Add(fromList[index]);
+                    fromList.RemoveAt(index);
+                    break;
+                }
+                default:
+                {
+                    Console.WriteLine("Yanlış veri girdiniz!");
+                    Console.ReadKey();
+                    break;
+                }
+            }
         }
-
-
     }
 }
