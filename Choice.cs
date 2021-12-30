@@ -54,18 +54,21 @@ namespace proje2_ToDo
                 case 1:
                 {
                     search_index = KartBulucu(title, todo);
+                    KartUpdater(search_index, todo, worker_dict);
                     break;
                 }
 
                 case 2:
                 {
                     search_index = KartBulucu(title, progress);
+                    KartUpdater(search_index, progress, worker_dict);
                     break;
                 }
 
                 case 3:
                 {
                     search_index = KartBulucu(title, done);
+                    KartUpdater(search_index, done, worker_dict);
                     break;
                 }
 
@@ -129,7 +132,7 @@ namespace proje2_ToDo
 
         public static void KartMove()
         {
-
+            
         }
 
         public static void KartPrint()
@@ -217,6 +220,75 @@ namespace proje2_ToDo
                             return -1;
                     }
                 }
+        }
+
+        private static void KartUpdater(int index, List<Kart> myList, Dictionary<int, string> my_dict)
+        {
+            Console.WriteLine("Lütfen aşağıdaki Kart'ın hangi bilgisini değiştirmek istediğinizi seçiniz: ");
+            myList[index].KartBilgileri(my_dict);
+            Console.WriteLine(@"
+Başlık      (1)
+İçerik      (2)
+Atanan Kişi (3)
+Büyüklük    (4)");
+
+            int choice;
+            while (!Int32.TryParse(Console.ReadLine(), out choice)){}
+
+            switch (choice)
+            {
+                case 1:
+                {
+                    Console.WriteLine("Yeni başlığı giriniz.");
+                    string new_title = Console.ReadLine();
+                    myList[index].Title = new_title;
+                    break;
+                }
+                case 2:
+                {
+                    Console.WriteLine("Yeni içeriği giriniz.");
+                    string new_context = Console.ReadLine();
+                    myList[index].Context = new_context;
+                    break;
+                }
+                case 3:
+                {
+                    Console.WriteLine("Yeni atanan kişinin id sini giriniz.");
+
+                    int new_id;
+                    while (!Int32.TryParse(Console.ReadLine(), out new_id)){}
+
+                    if (IsMember(new_id, worker_dict))
+                        myList[index].Id = new_id;
+                    
+                    else
+                    {
+                        Console.WriteLine("Girdiğiniz id veri tabanına bulunmamaktadır.");
+                        Console.ReadKey();
+                        Console.Clear();
+                    }       
+                    break;
+                }
+                case 4:
+                {
+                    Console.WriteLine("Yeni büyüklüğü seçiniz.");
+                    Console.WriteLine("Büyüklük Seçiniz -> XS(1),S(2),M(3),L(4),XL(5) :");
+
+                    int new_size = 0;
+                    while (new_size < 1 || new_size > 5)
+                        while (!Int32.TryParse(Console.ReadLine(), out new_size)){}
+
+                    myList[index].Size = new_size;
+                    break;
+                }
+                
+                default:
+                {
+                    Console.WriteLine("Yanlış veri girdiniz!");
+                    Console.ReadKey();
+                    break;
+                }
+            }
         }
         private static void FailProtocol()
         {

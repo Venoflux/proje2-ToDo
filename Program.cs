@@ -45,6 +45,7 @@
                     case 3:
                     {
                         Console.Clear();
+                        Choice.KartUpdate();
                         break;
                     }
 
