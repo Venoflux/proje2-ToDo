@@ -2,9 +2,15 @@ namespace proje2_ToDo
 {
     class Choice
     {
-        static List<Kart> todo = new List<Kart>(){};
-        static List<Kart> progress = new List<Kart>(){};
-        static List<Kart> done = new List<Kart>(){};
+        static List<Kart> todo = new List<Kart>(){
+            new Kart("Cleaning", "Floor needs to be cleaned", 123, 1),
+        };
+        static List<Kart> progress = new List<Kart>(){
+            new Kart("Cleaning", "Floor needs to be cleaned", 321, 2),
+        };
+        static List<Kart> done = new List<Kart>(){
+            new Kart("Cleaning", "Floor needs to be cleaned", 523, 3),
+        };
         static Dictionary<int, string> worker_dict = new Dictionary<int, string>(){
             {123, "Ahmet Baran"},
             {321, "Rutkay Kuzgun"},
@@ -55,6 +61,9 @@ namespace proje2_ToDo
                 {
                     search_index = KartBulucu(title, todo);
                     KartUpdater(search_index, todo, worker_dict);
+                    Console.WriteLine("Başarılı...");
+                    Console.ReadKey();
+                    Console.Clear();
                     break;
                 }
 
@@ -62,6 +71,9 @@ namespace proje2_ToDo
                 {
                     search_index = KartBulucu(title, progress);
                     KartUpdater(search_index, progress, worker_dict);
+                    Console.WriteLine("Başarılı...");
+                    Console.ReadKey();
+                    Console.Clear();
                     break;
                 }
 
@@ -69,13 +81,40 @@ namespace proje2_ToDo
                 {
                     search_index = KartBulucu(title, done);
                     KartUpdater(search_index, done, worker_dict);
+                    Console.WriteLine("Başarılı...");
+                    Console.ReadKey();
+                    Console.Clear();
                     break;
                 }
 
                 case -1:
                 {
-                    Console.WriteLine("Aradığınız başlıkta bir Kart bulunmamaktadır. ");
-                    break;
+                    Console.WriteLine(@" Aradığınız krtiterlere uygun kart board'da bulunamadı. Lütfen bir seçim 
+yapınız.");
+                    Console.WriteLine("* İşkemi sonlandırmak için : (1)");
+                    Console.WriteLine("* Yeniden denemek için : (2)");
+                    // Özelliği durdur veya yeniden dene programını buraya ekle.
+                    int choice;
+                    while (!Int32.TryParse(Console.ReadLine(), out choice)){}
+
+                    if (choice == 2)
+                        {
+                            Console.Clear();
+                            KartUpdate();
+                            break;
+                        }
+                        
+                    else if (choice == 1)
+                        {
+                            Console.Clear();
+                            break;
+                        }
+
+                    else
+                        {
+                            Console.Clear();
+                            break;
+                        }    
                 }
                 
                 default:
@@ -97,6 +136,7 @@ namespace proje2_ToDo
                     todo.RemoveAt(search_index);
                     Console.WriteLine("Kart başarıyla silinmiştir.");
                     Console.ReadKey();
+                    Console.Clear();
                     break;
                 }
 
@@ -106,6 +146,7 @@ namespace proje2_ToDo
                     progress.RemoveAt(search_index);
                     Console.WriteLine("Kart başarıyla silinmiştir.");
                     Console.ReadKey();
+                    Console.Clear();
                     break;
                 }
 
@@ -115,14 +156,38 @@ namespace proje2_ToDo
                     done.RemoveAt(search_index);
                     Console.WriteLine("Kart başarıyla silinmiştir.");
                     Console.ReadKey();
+                    Console.Clear();
                     break;
                 }
 
                 case -1:
                 {
-                    Console.WriteLine("Aradığınız başlıkta bir Kart bulunmamaktadır. ");
-                    Console.ReadKey();
-                    break;
+                    Console.WriteLine(@" Aradığınız krtiterlere uygun kart board'da bulunamadı. Lütfen bir seçim 
+yapınız.");
+                    Console.WriteLine("* İşkemi sonlandırmak için : (1)");
+                    Console.WriteLine("* Yeniden denemek için : (2)");
+                    // Özelliği durdur veya yeniden dene programını buraya ekle.
+                    int choice;
+                    while (!Int32.TryParse(Console.ReadLine(), out choice)){}
+
+                    if (choice == 2)
+                        {
+                            Console.Clear();
+                            KartDelete();
+                            break;
+                        }
+                        
+                    else if (choice == 1)
+                        {
+                            Console.Clear();
+                            break;
+                        }
+
+                    else
+                        {
+                            Console.Clear();
+                            break;
+                        }
                 }
                 
                 default:
@@ -144,6 +209,7 @@ Lütfen kart başlığını yazınız:  ");
                     KartMover(search_index, "TODO", todo, worker_dict);
                     Console.WriteLine("Kart başarıyla taşınmıştır.");
                     Console.ReadKey();
+                    Console.Clear();
                     break;
                 }
 
@@ -153,6 +219,7 @@ Lütfen kart başlığını yazınız:  ");
                     KartMover(search_index, "IN PROGRESS", progress, worker_dict);
                     Console.WriteLine("Kart başarıyla taşınmıştır.");
                     Console.ReadKey();
+                    Console.Clear();
                     break;
                 }
 
@@ -162,14 +229,38 @@ Lütfen kart başlığını yazınız:  ");
                     KartMover(search_index, "DONE", done, worker_dict);
                     Console.WriteLine("Kart başarıyla taşınmıştır.");
                     Console.ReadKey();
+                    Console.Clear();
                     break;
                 }
 
                 case -1:
                 {
-                    Console.WriteLine("Aradığınız başlıkta bir Kart bulunmamaktadır. ");
-                    Console.ReadKey();
-                    break;
+                    Console.WriteLine(@" Aradığınız krtiterlere uygun kart board'da bulunamadı. Lütfen bir seçim 
+yapınız.");
+                    Console.WriteLine("* İşkemi sonlandırmak için : (1)");
+                    Console.WriteLine("* Yeniden denemek için : (2)");
+                    // Özelliği durdur veya yeniden dene programını buraya ekle.
+                    int choice;
+                    while (!Int32.TryParse(Console.ReadLine(), out choice)){}
+
+                    if (choice == 2)
+                        {
+                            Console.Clear();
+                            KartMove();
+                            break;
+                        }
+                        
+                    else if (choice == 1)
+                        {
+                            Console.Clear();
+                            break;
+                        }
+
+                    else
+                        {
+                            Console.Clear();
+                            break;
+                        }
                 }
                 
                 default:
@@ -217,6 +308,9 @@ Lütfen kart başlığını yazınız:  ");
             }
             else
                 Console.WriteLine("~ BOŞ ~");
+
+            Console.ReadKey();
+            Console.Clear();
         }
 
 
